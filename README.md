@@ -10,9 +10,9 @@ Manages ip routes/rules and make them persisent (load on boot).
 To install custom routes and rules:
 
 ```puppet
-  net::route { '1.1.1.1 via 192.0.2.1' }
+  net::route { '1.1.1.1 via 192.0.2.1': }
 
-  net::route { '2606:4700:4700::1111 via 2001:f00:bad::1'
+  net::route { '2606:4700:4700::1111 via 2001:f00:bad::1':
     family => 'inet6',
   }
 ```
@@ -33,7 +33,7 @@ Or:
 To install custom rules:
 
 ```puppet
-  net::rule { 'from 2001:f00:bad::/64 iif eth0 lookup isp-b'
+  net::rule { 'from 2001:f00:bad::/64 iif eth0 lookup isp-b':
     family => 'inet6',
   }
 ```
