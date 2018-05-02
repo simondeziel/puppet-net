@@ -6,12 +6,12 @@ define net::route (
 ) {
   include net
   if $family == 'inet' {
-    if $iproute !~ /^[0-9]{1,3}\.[0-9]+/ {
+    if $iproute !~ /^[0-9]{1,3}\.[0-9]+/ and $iproute !~ /^default/ {
       fail('Invalid iproute param for net::route')
     }
     $target = $net::routes_file
   } else {
-    if $iproute !~ /^[0-9a-fA-F]{1,4}:[0-9a-fA-F:]+/ {
+    if $iproute !~ /^[0-9a-fA-F]{1,4}:[0-9a-fA-F:]+/ and $iproute !~ /^default/ {
       fail('Invalid iproute param for net::route')
     }
     $target = $net::routes6_file
