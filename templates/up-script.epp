@@ -15,7 +15,11 @@ PERSIST_FILE="<%= $data %>"
 grep -oE '^[^#]+' "$PERSIST_FILE" | while read -r line; do
   # delete before adding as new IFACE might provide a better path
   /sbin/ip <% if $family == 'inet6' { %>-6 <% } %><%= $subcommand %> del $line >/dev/null 2>&1 || true
-  /sbin/ip <% if $family == 'inet6' { %>-6 <% } %><%= $subcommand %> add $line || true
+  # retry the route addition up to 3 times to workaround startup races
+  for i in 1 2 3; do
+    /sbin/ip <% if $family == 'inet6' { %>-6 <% } %><%= $subcommand %> add $line && break
+    sleep 1
+  done
 done
 
 exit 0
