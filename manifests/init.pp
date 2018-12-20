@@ -5,7 +5,7 @@ class net (
   Stdlib::AbsolutePath $routes_script_file  = $net::params::routes_script_file,
   Stdlib::AbsolutePath $routes6_script_file = $net::params::routes6_script_file,
   Stdlib::AbsolutePath $rules_script_file   = $net::params::rules_script_file,
-  Stdlib::AbsolutePath $rules5_script_file  = $net::params::rules6_script_file,
+  Stdlib::AbsolutePath $rules6_script_file  = $net::params::rules6_script_file,
   Stdlib::AbsolutePath $routes_file         = $net::params::routes_file,
   Stdlib::AbsolutePath $routes6_file        = $net::params::routes6_file,
   Stdlib::AbsolutePath $rules_file          = $net::params::rules_file,
